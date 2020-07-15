@@ -1,3 +1,4 @@
-COPY bin/Release/netcoreapp3.1/publish/ App/
-WORKDIR /App
-ENTRYPOINT ["dotnet", "NetCore.Docker.dll"]
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS RUNTIME
+WORKDIR /app
+COPY MyFirstCoreApi/bin/Debug/netcoreapp2.1/MyFirstCoreApi.dll ./
+ENTRYPOINT ["dotnet", "MyFirstCoreApi.dll"]
